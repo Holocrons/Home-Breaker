@@ -24,12 +24,4 @@ public class CameraManager : MonoBehaviour
             transform.position = new Vector3(cameraPositions[i].transform.position.x, cameraPositions[i].transform.position.y, -10);
         }
     }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.tag == "Player" && collision.GetComponent<PlayerMovement>().currentsScene == 3)
-        {
-            transform.Translate(new Vector2(collision.GetComponent<PlayerMovement>().x, 0) * Time.deltaTime * 7.5f);
-        }
-    }
 }
