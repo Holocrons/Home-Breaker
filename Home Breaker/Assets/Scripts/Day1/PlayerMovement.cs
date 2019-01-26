@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public int currentsScene = 0;
     public float timer;
     public bool canTp = true;
+    public List<GameObject> inventory;
+    public GameObject menuItem;
 
     // Start is called before the first frame update
     void Start()
@@ -22,15 +24,27 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             x = 1;
+            menuItem.SetActive(false);
         }
         else if (Input.GetKey(KeyCode.Q))
         {
             x = -1;
+            menuItem.SetActive(false);
         }
         else
         {
             x = 0;
         }
         transform.Translate(new Vector2(x, 0) * Time.deltaTime * speed);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "item" && Input.GetKeyDown(KeyCode.E))
+        {
+            menuItem.SetActive(true);
+            menuItem.transform.position = new Vector3(collision.transform.position.x - 2, collision.transform.position.y + 2, -5);
+            menuItem.GetComponent<DynamicMenu>().obj = collision.gameObject;
+        }
     }
 }
