@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.tag == "item" && Input.GetKeyDown(KeyCode.E))
         {
             menuItem.SetActive(true);
-            menuItem.transform.position = new Vector3(collision.transform.position.x - 2, collision.transform.position.y + 2, -5);
+            menuItem.transform.position = new Vector3(collision.transform.position.x - 1, collision.transform.position.y + 1, -5);
             menuItem.GetComponent<DynamicMenu>().obj = collision.gameObject;
         }
     }

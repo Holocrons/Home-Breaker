@@ -9,6 +9,9 @@ public class DynamicMenu : MonoBehaviour
     private int nb = 0;
     private int count = 0;
     public GameObject arrow;
+    private float timer;
+    public GameObject player;
+    private Vector2 basPos;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +22,8 @@ public class DynamicMenu : MonoBehaviour
         mr[0].sortingOrder = 4;
         mr[1].sortingOrder = 4;
         UpdateData();
+        timer = Time.time + 0.1f;
+        basPos = arrow.transform.position;
     }
 
     // Update is called once per frame
@@ -30,13 +35,22 @@ public class DynamicMenu : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.S) && count < nb - 1)
         {
-            arrow.transform.position = new Vector2(arrow.transform.position.x, arrow.transform.position.y - 1);
+            arrow.transform.position = new Vector2(arrow.transform.position.x, arrow.transform.position.y - 0.5f);
             count++;
         }
         if (Input.GetKeyDown(KeyCode.Z) && count > 0)
         {
-            arrow.transform.position = new Vector2(arrow.transform.position.x, arrow.transform.position.y + 1);
+            arrow.transform.position = new Vector2(arrow.transform.position.x, arrow.transform.position.y + 0.5f);
             count--;
+        }
+        if (Input.GetKeyDown(KeyCode.E) && timer <= Time.time)
+        {
+            if (obj.GetComponent<Item>().actions[count] == "take")
+            {
+                player.GetComponent<PlayerMovement>().inventory.Add(obj);
+                obj.SetActive(false);
+                gameObject.SetActive(false);
+            }
         }
     }
 
@@ -45,7 +59,7 @@ public class DynamicMenu : MonoBehaviour
         tm[0].text = obj.name;
         tm[1].text = "";
         nb = 0;
-        arrow.transform.position = new Vector2(arrow.transform.position.x, arrow.transform.position.y + count);
+        arrow.transform.position = new Vector2(arrow.transform.position.x, basPos.y);
         count = 0;
         foreach (string str in obj.GetComponent<Item>().actions)
         {
