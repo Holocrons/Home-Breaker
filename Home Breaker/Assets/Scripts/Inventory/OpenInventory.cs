@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpenInventory : MonoBehaviour
 {
-    public GameObject cube;
+    private GameObject cube;
     private bool state = false;
     static private int scale = 2;
     static private int objectSize = 32 * scale;
