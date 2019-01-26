@@ -14,6 +14,7 @@ public class DoorManager : MonoBehaviour
         {
             collision.transform.position = otherDoor.transform.position;
             collision.GetComponent<PlayerMovement>().currentsScene = destination;
+            collision.GetComponent<PlayerMovement>().timer = Time.time + 0.1f;
         }
     }
 
