@@ -27,11 +27,11 @@ public class OpenInventory : MonoBehaviour
         {
             SwitchVisibility();
         }
+        SetVisible();
     }
 
-    void SwitchVisibility()
+    void SetVisible()
     {
-        state = !state;
         int i = 1;
         Vector3 pos = cam.WorldToScreenPoint(this.transform.position);
         foreach (Transform child in transform)
@@ -40,15 +40,17 @@ public class OpenInventory : MonoBehaviour
             child.gameObject.SetActive(state);
             i++;
         }
-        Debug.Log("push");
+    }
+
+    void SwitchVisibility()
+    {
+        state = !state;
     }
 
     void SetPosition(Transform child, int i, Vector3 pos)
     {
         var cpos = child.position;
-        Debug.Log(pos);
         Vector3 newPos = cam.ScreenToWorldPoint(new Vector3(pos.x + i * (objectSize + 2 * shift), pos.y, pos.z));
         child.transform.position = newPos;
-        Debug.Log("done");
     }
 }
