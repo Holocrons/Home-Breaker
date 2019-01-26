@@ -48,9 +48,9 @@ public class DynamicMenu : MonoBehaviour
             if (obj.GetComponent<Item>().actions[count] == "take")
             {
                 player.GetComponent<PlayerMovement>().inventory.Add(obj);
-                //obj.SetActive(false);
+                obj.SetActive(false);
                 gameObject.SetActive(false);
-                //GameObject.Find("Inventory");
+                obj.transform.parent = GameObject.Find("Inventory").transform;
             }
         }
     }

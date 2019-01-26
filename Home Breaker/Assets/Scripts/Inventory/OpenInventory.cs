@@ -32,7 +32,7 @@ public class OpenInventory : MonoBehaviour
     void SwitchVisibility()
     {
         state = !state;
-        int i = 0;
+        int i = 1;
         Vector3 pos = cam.WorldToScreenPoint(this.transform.position);
         foreach (Transform child in transform)
         {

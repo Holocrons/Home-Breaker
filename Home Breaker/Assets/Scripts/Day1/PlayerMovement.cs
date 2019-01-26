@@ -11,11 +11,13 @@ public class PlayerMovement : MonoBehaviour
     public bool canTp = true;
     public List<GameObject> inventory;
     public GameObject menuItem;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         timer = Time.time + 0.1f;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -35,6 +37,11 @@ public class PlayerMovement : MonoBehaviour
         {
             x = 0;
         }
+        if (x < 0 && transform.localScale.x < 0)
+            transform.localScale = new Vector2(1, 1);
+        if (x > 0 && transform.localScale.x > 0)
+            transform.localScale = new Vector2(-1, 1);
+        anim.SetInteger("running", x);
         transform.Translate(new Vector2(x, 0) * Time.deltaTime * speed);
     }
 

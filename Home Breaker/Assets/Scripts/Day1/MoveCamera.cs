@@ -28,7 +28,7 @@ public class MoveCamera : MonoBehaviour
                 return;
             if (right == false && transform.parent.gameObject.transform.position.x <= limit)
                 return;
-            transform.parent.gameObject.transform.Translate(new Vector2(collision.GetComponent<PlayerMovement>().x, 0) * Time.deltaTime * 7.5f);
+            transform.parent.gameObject.transform.Translate(new Vector2(collision.GetComponent<PlayerMovement>().x, 0) * Time.deltaTime * 3.7f);
         }
     }
 }

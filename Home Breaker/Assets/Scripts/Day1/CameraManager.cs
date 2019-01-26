@@ -23,6 +23,8 @@ public class CameraManager : MonoBehaviour
         {
             i = pm.currentsScene;
             transform.position = new Vector3(cameraPositions[i].transform.position.x, cameraPositions[i].transform.position.y, -10);
+            if (i == 3)
+              transform.position = new Vector3(player.transform.position.x, cameraPositions[i].transform.position.y, -10);
         }
     }
 }
