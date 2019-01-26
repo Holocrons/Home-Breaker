@@ -198,7 +198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8287902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.78, y: 1.19, z: -1}
+  m_LocalPosition: {x: 2.77, y: 1.15, z: -1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_Children:
   - {fileID: 534528459}
@@ -221,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 0}
   arrow: {fileID: 220496987}
+  timer: 0
   player: {fileID: 1519248395}
 --- !u!1 &79241717
 GameObject:
@@ -258,6 +259,7 @@ MonoBehaviour:
   - Look
   - use
   look: i m a pink square
+  prefabs: {fileID: 0}
 --- !u!50 &79241719
 Rigidbody2D:
   serializedVersion: 4
@@ -1791,7 +1793,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545546275}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.16, y: 26.45, z: 0}
+  m_LocalPosition: {x: -2.76, y: -1.17, z: 0}
   m_LocalScale: {x: 5.75, y: 6.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1810,10 +1812,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions:
-  - Look
+  - look
   - take
   - courge
   look: I m a big square
+  prefabs: {fileID: 5788085424909805995, guid: 26112a5e42467bc44a41a7015d37bd5f, type: 3}
 --- !u!1 &545728679
 GameObject:
   m_ObjectHideFlags: 0
@@ -6027,9 +6030,10 @@ GameObject:
   - component: {fileID: 2017414401}
   - component: {fileID: 2017414404}
   - component: {fileID: 2017414403}
+  - component: {fileID: 2017414405}
   m_Layer: 0
-  m_Name: box_bijoux
-  m_TagString: Untagged
+  m_Name: jewel box
+  m_TagString: item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6143,6 +6147,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2017414405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017414400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008531c02fac33947b76a8d27cdaefa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+  - look
+  - take
+  look: I see
+  prefabs: {fileID: 5788085424909805995, guid: 26112a5e42467bc44a41a7015d37bd5f, type: 3}
 --- !u!1 &2025470190
 GameObject:
   m_ObjectHideFlags: 0

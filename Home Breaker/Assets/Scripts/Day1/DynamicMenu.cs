@@ -9,7 +9,7 @@ public class DynamicMenu : MonoBehaviour
     private int nb = 0;
     private int count = 0;
     public GameObject arrow;
-    private float timer;
+    public float timer;
     public GameObject player;
     private Vector2 basPos;
 
@@ -22,9 +22,11 @@ public class DynamicMenu : MonoBehaviour
         mr[0].sortingOrder = 4;
         mr[1].sortingOrder = 4;
         UpdateData();
-        timer = Time.time + 0.1f;
-        basPos = arrow.transform.position;
+        basPos.x = transform.position.x - 0.75f;
+        basPos.y = transform.position.y - 0.25f;
+        arrow.transform.position = basPos;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -51,12 +53,20 @@ public class DynamicMenu : MonoBehaviour
                 obj.SetActive(false);
                 gameObject.SetActive(false);
                 obj.transform.parent = GameObject.Find("Inventory").transform;
+                timer = Time.time + 0.1f;
+            }
+            if (obj.GetComponent<Item>().actions[count] == "look")
+            {
+                obj.GetComponent<Item>().Look();
+                timer = Time.time + 0.1f;
             }
         }
     }
 
     void UpdateData()
     {
+        basPos.x = transform.position.x - 0.75f;
+        basPos.y = transform.position.y - 0.25f;
         tm[0].text = obj.name;
         tm[1].text = "";
         nb = 0;
