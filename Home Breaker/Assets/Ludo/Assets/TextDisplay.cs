@@ -26,7 +26,6 @@ public class TextDisplay : MonoBehaviour
         GameObject tmp;
 
         tmp = Instantiate(prefabs);
-        tmp.GetComponent<Transform>().SetPositionAndRotation(-0.2, 2, 0);
         tmp.GetComponent<TextMesh>().text = str;
     }
 }
