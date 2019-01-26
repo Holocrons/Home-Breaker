@@ -22,7 +22,7 @@ public class OpenInventory : MonoBehaviour
     void Update()
     {
         var pos = cam.WorldToScreenPoint(cube.transform.position);
-        cube.transform.position = cam.ScreenToWorldPoint(new Vector3(objectSize / 2 + shift, objectSize / 2 + shift, pos.z));
+        cube.transform.position = cam.ScreenToWorldPoint(new Vector3(objectSize / 1.5f + shift, objectSize + shift, pos.z));
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             SwitchVisibility();
