@@ -19,7 +19,6 @@ public class DoorManager : MonoBehaviour
     {
         if (collision.tag == "Player" && e == true && Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("ok");
             Camera.main.GetComponent<CameraManager>().PlayClip(1, 40f);
             if (otherDoor != null)
                 collision.transform.position = otherDoor.transform.position;

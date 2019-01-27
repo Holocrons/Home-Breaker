@@ -5,7 +5,9 @@ using UnityEngine;
 public class StartEngine : MonoBehaviour
 {
     public GameObject inventory;
-    
+    public Sprite[] spr;
+    private int i = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,13 @@ public class StartEngine : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "flowers")
-            Destroy(collision.gameObject);
+        {
+            collision.gameObject.GetComponent<SpriteRenderer>().sprite = spr[i];
+            collision.transform.position = new Vector2(collision.transform.position.x, collision.transform.position.y - 0.2f);
+            if (i == 0)
+                i = 1;
+            else
+                i = 0;
+        }
     }
 }

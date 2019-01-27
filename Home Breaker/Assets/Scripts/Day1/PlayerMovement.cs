@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Camera.main.GetComponent<CameraManager>().i == 11)
+            return;
         if (Input.GetKey(KeyCode.D))
         {
             x = 1;

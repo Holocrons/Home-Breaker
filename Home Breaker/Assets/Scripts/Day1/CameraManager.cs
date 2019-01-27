@@ -7,7 +7,7 @@ public class CameraManager : MonoBehaviour
     public List<GameObject> cameraPositions;
     public GameObject player;
     private PlayerMovement pm;
-    private int i = 0;
+    public int i = 0;
     public AudioClip[] ac;
     private AudioSource aso;
 

@@ -152,9 +152,15 @@ public class DynamicMenu : MonoBehaviour
         {
             foreach (GameObject item in player.GetComponent<PlayerMovement>().inventory)
             {
-                if (item.name == "v_whiskey(Clone)")
+                if (item.name == "v_whiskey(Clone)" && obj.name == "Closet")
                 {
                     obj.GetComponent<Closet>().HideIt();
+                    return;
+                }
+                else if (item.name == "v_paquet_clopes(Clone)" && obj.name == "purse")
+                {
+                    WriteThings("Old demons strikes back");
+                    obj.GetComponent<Purse>().pu();
                     return;
                 }
             }
@@ -167,8 +173,7 @@ public class DynamicMenu : MonoBehaviour
                 if (item.name == "v_cle_molette(Clone)")
                 {
                     radia = true;
-                    WriteThings("That hot !");
-                    obj.GetComponent<Radia>().heater();
+                    WriteThings("Thit thing could burn anything now !"); 
                     return;
                 }
             }
@@ -181,13 +186,14 @@ public class DynamicMenu : MonoBehaviour
         {
             foreach (GameObject item in player.GetComponent<PlayerMovement>().inventory)
             {
-                if (item.name == "v_culotte(Clone)" && radia == true)
+                if (item.name == "v_cravate(Clone)" && radia == true)
                 {
                     WriteThings("RIP little tie ...");
                     gameObject.SetActive(false);
+                    obj.GetComponent<Radia>().heater();
                     return;
                 }
-                else if (item.name == "v_culotte(Clone)" && radia == false)
+                else if (item.name == "v_cravate(Clone)" && radia == false)
                 {
                     WriteThings("the heater is cold");
                     return ;
@@ -197,7 +203,7 @@ public class DynamicMenu : MonoBehaviour
         }
         if (obj.GetComponent<Item>().actions[count] == "erase")
         {
-            WriteThings("yeah thoses 'unpaid factures' can wait");
+            WriteThings("yeah thoses 'unpaid bills' can wait");
         }
         if (obj.GetComponent<Item>().actions[count] == "wash")
         {
@@ -217,11 +223,11 @@ public class DynamicMenu : MonoBehaviour
         {
             foreach (GameObject item in player.GetComponent<PlayerMovement>().inventory)
             {
-                if (item.name == "v_stylo(Clone)")
+                if (item.name == "v_encrier(Clone)")
                 {
                     write = true;
                 }
-                else if (item.name == "v_lipstick(Clone)")
+                else if (item.name == "v_parfum(Clone)")
                 {
                     parf = true;
                 }
@@ -237,6 +243,7 @@ public class DynamicMenu : MonoBehaviour
             else
             {
                 WriteThings("..... And done ! I can leave it here");
+                obj.GetComponent<Letter>().Let();
                 gameObject.SetActive(false);
             }
         }

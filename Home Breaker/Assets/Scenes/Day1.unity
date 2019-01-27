@@ -223,6 +223,167 @@ MonoBehaviour:
   arrow: {fileID: 220496987}
   timer: 0
   player: {fileID: 1519248395}
+--- !u!1 &58415198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 58415203}
+  - component: {fileID: 58415202}
+  - component: {fileID: 58415201}
+  - component: {fileID: 58415200}
+  - component: {fileID: 58415199}
+  - component: {fileID: 58415204}
+  m_Layer: 0
+  m_Name: purse
+  m_TagString: item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &58415199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58415198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008531c02fac33947b76a8d27cdaefa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+  - look
+  - hide
+  look: Mom's purse
+  info: {fileID: 0}
+  miniItem: {fileID: 0}
+--- !u!50 &58415200
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58415198}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!61 &58415201
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58415198}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.2, y: 1.04}
+    newSize: {x: 1.2, y: 1.04}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.2, y: 1.04}
+  m_EdgeRadius: 0
+--- !u!212 &58415202
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58415198}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: a0f87935a23aae640857296f158b49ea, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.2, y: 1.04}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &58415203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58415198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.774, y: -1.683, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 82
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &58415204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58415198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a2df058d669f544e843d8982a967f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 846554601}
 --- !u!1 &113253270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2485,6 +2646,7 @@ MonoBehaviour:
   - {fileID: 687642574}
   - {fileID: 401683815}
   player: {fileID: 1519248395}
+  i: 0
   ac:
   - {fileID: 8300000, guid: 4b66f0699342d6d49b9d515143f1a5e1, type: 3}
   - {fileID: 8300000, guid: 2e4c8dd9b2eb43e4ba21084bb739186b, type: 3}
@@ -3677,7 +3839,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1d261a1b56db0e54db9b38ac517860ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3781,6 +3943,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 846554601}
+  spr:
+  - {fileID: 21300000, guid: 16d6b7ebbcf3d92458c4248970301ea3, type: 3}
+  - {fileID: 21300000, guid: 48e5a64d2c69da947a18a2535b88bff6, type: 3}
 --- !u!1 &639711137
 GameObject:
   m_ObjectHideFlags: 0
@@ -4028,7 +4193,7 @@ MonoBehaviour:
   - take
   look: My dad's favorite Tie
   info: {fileID: 0}
-  miniItem: {fileID: 4826218041521374193, guid: bdf3f4c64205a304aaffcee3800f6cec,
+  miniItem: {fileID: 8364997449108512151, guid: 98d6a72deab39a3459b07c01fbc84d56,
     type: 3}
 --- !u!50 &646959524
 Rigidbody2D:
@@ -4530,7 +4695,7 @@ PrefabInstance:
     - target: {fileID: 8526882772839415257, guid: 02aa210ff7c85414690b1ceff342a350,
         type: 3}
       propertyPath: m_Name
-      value: v_chassure(Clone)
+      value: v_parfum(Clone)
       objectReference: {fileID: 0}
     - target: {fileID: 8526882772839415256, guid: 02aa210ff7c85414690b1ceff342a350,
         type: 3}
@@ -4555,7 +4720,7 @@ PrefabInstance:
     - target: {fileID: 8526882773054010163, guid: 02aa210ff7c85414690b1ceff342a350,
         type: 3}
       propertyPath: m_Name
-      value: v_stylo(Clone)
+      value: v_phone(Clone)
       objectReference: {fileID: 0}
     - target: {fileID: 8526882773054010162, guid: 02aa210ff7c85414690b1ceff342a350,
         type: 3}
@@ -4601,6 +4766,28 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.8390745
+      objectReference: {fileID: 0}
+    - target: {fileID: 8526882773185600770, guid: 02aa210ff7c85414690b1ceff342a350,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8526882772839415259, guid: 02aa210ff7c85414690b1ceff342a350,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7d2aa004265d77e479499adee5bc8dda,
+        type: 3}
+    - target: {fileID: 8526882773054010157, guid: 02aa210ff7c85414690b1ceff342a350,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a52cebd7b4d0124ca6135fce0daa752,
+        type: 3}
+    - target: {fileID: 8526882773129014695, guid: 02aa210ff7c85414690b1ceff342a350,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02aa210ff7c85414690b1ceff342a350, type: 3}
@@ -5976,7 +6163,7 @@ MonoBehaviour:
   - take
   look: it's my feather !
   info: {fileID: 0}
-  miniItem: {fileID: 3271666534909859534, guid: 3a0b8635fa8a2134390f6e6eeb420ad7,
+  miniItem: {fileID: 6732977627839596017, guid: 149eff8566407e049b88eb36e6e210fa,
     type: 3}
 --- !u!1 &904600610
 GameObject:
@@ -9170,6 +9357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 846554601}
+  prefabs: {fileID: 2157138732198433424, guid: dcf44551e04b6a546998e677f465652f, type: 3}
 --- !u!1 &1710875945
 GameObject:
   m_ObjectHideFlags: 0
@@ -11970,6 +12158,7 @@ GameObject:
   - component: {fileID: 2096359748}
   - component: {fileID: 2096359749}
   - component: {fileID: 2096359750}
+  - component: {fileID: 2096359751}
   m_Layer: 0
   m_Name: paper_stack
   m_TagString: item
@@ -12104,6 +12293,19 @@ MonoBehaviour:
   look: I could write a fake letter
   info: {fileID: 0}
   miniItem: {fileID: 0}
+--- !u!114 &2096359751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096359745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6512e8769dc4135449a84144f88bf565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 846554601}
 --- !u!1 &2111677667
 GameObject:
   m_ObjectHideFlags: 0

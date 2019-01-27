@@ -24,13 +24,17 @@ public class BillyTrade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Camera.main.GetComponent<CameraManager>().i != 11)
+            return ;
         ColorChildren();
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-            MoveSelector(KeyCode.LeftArrow);
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            MoveSelector(KeyCode.RightArrow);
+        if (Input.GetKeyDown(KeyCode.Q))
+            MoveSelector(KeyCode.Q);
+        if (Input.GetKeyDown(KeyCode.D))
+            MoveSelector(KeyCode.D);
         if (Input.GetKeyDown(KeyCode.E))
             TradeObjects();
+        if (Input.GetKeyDown(KeyCode.Escape))
+            GameObject.Find("Timmy").GetComponent<PlayerMovement>().currentsScene = 0;  
         SetSelector();
     }
 
@@ -42,17 +46,20 @@ public class BillyTrade : MonoBehaviour
         Transform test = inventory.transform.Find(item.name);
         if (test)
         {
+            GameObject.Find("Timmy").GetComponent<PlayerMovement>().inventory.Remove(test.gameObject);
             Destroy(test.gameObject);
             item.transform.SetParent(wall.transform);
             item.SetSiblingIndex(tradePos);
             item.gameObject.SetActive(false);
             child.SetParent(inventory.transform);
+            child.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 4;
+            GameObject.Find("Timmy").GetComponent<PlayerMovement>().inventory.Add(child.gameObject);
         }
     }
 
     void MoveSelector(KeyCode key)
     {
-        if (key == KeyCode.RightArrow)
+        if (key == KeyCode.D)
             tradePos++;
         else
             tradePos--;
