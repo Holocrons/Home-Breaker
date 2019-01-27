@@ -5,11 +5,12 @@ using UnityEngine;
 public class BillyTrade : MonoBehaviour
 {
     private GameObject wall;
-    static private int scale = 2;
-    static private int objectSize = 32 * scale;
-    static private int shift = objectSize;
+    static private float scale = 1;
+    static private float objectSize = 32 * scale;
+    static private float shift = objectSize;
     static private int maxTrade = 4;
     private int tradePos = 0;
+    static private float[] positions = { -4, -1.3f, 1.6f, 4.5f};
     private Camera cam;
 
     // Start is called before the first frame update
@@ -30,6 +31,7 @@ public class BillyTrade : MonoBehaviour
             MoveSelector(KeyCode.RightArrow);
         if (Input.GetKeyDown(KeyCode.E))
             TradeObjects();
+        SetSelector();
     }
 
     void TradeObjects()
@@ -63,8 +65,9 @@ public class BillyTrade : MonoBehaviour
 
     void SetSelector()
     {
-        var pos = cam.WorldToScreenPoint(wall.transform.position);
-        wall.transform.Find("Selector").position = cam.ScreenToWorldPoint(new Vector3((pos.x + tradePos * (objectSize + 2 * shift)) / 1.5f, pos.y, pos.z));
+        //var pos = cam.WorldToScreenPoint(wall.transform.position);
+        //wall.transform.Find("Selector").position = cam.ScreenToWorldPoint(new Vector3((pos.x + tradePos * (objectSize + 2 * shift)) / 1.5f - 100, pos.y, pos.z));
+        wall.transform.Find("Selector").localPosition = new Vector3(positions[tradePos], 0, 0);
     }
 
     private void SetChildren()
@@ -73,7 +76,7 @@ public class BillyTrade : MonoBehaviour
         var pos = cam.WorldToScreenPoint(wall.transform.position);
         foreach (Transform child in transform)
         {
-            SetPosition(child, i, pos);
+            //SetPosition(child, i, pos);
             i++;
         }
     }
