@@ -96,6 +96,7 @@ public class DynamicMenu : MonoBehaviour
             {
                 if (item.name.IndexOf("jerrycan") != -1)
                 {
+                    player.GetComponent<PlayerMovement>().b[2] = true;
                     obj.GetComponent<StartEngine>().enabled = true;
                     player.GetComponent<PlayerMovement>().inventory.Remove(item);
                     gameObject.SetActive(false);
@@ -111,6 +112,7 @@ public class DynamicMenu : MonoBehaviour
             if ((tmp = obj.GetComponent<Toillet>()) != null)
             {
                 tmp.Switch();
+                player.GetComponent<PlayerMovement>().b[0] = true;
                 gameObject.SetActive(false);
             }
         }
@@ -134,6 +136,7 @@ public class DynamicMenu : MonoBehaviour
                     {
                         obj.GetComponent<Floor>().Activate();
                         WriteThings("Dad made such a mess !");
+                        player.GetComponent<PlayerMovement>().b[4] = true;
                         gameObject.SetActive(false);
                         return;
                     }
@@ -155,11 +158,13 @@ public class DynamicMenu : MonoBehaviour
                 if (item.name == "v_whiskey(Clone)" && obj.name == "Closet")
                 {
                     obj.GetComponent<Closet>().HideIt();
+                    player.GetComponent<PlayerMovement>().b[6] = true;
                     return;
                 }
                 else if (item.name == "v_paquet_clopes(Clone)" && obj.name == "purse")
                 {
                     WriteThings("Old demons strikes back");
+                    player.GetComponent<PlayerMovement>().b[7] = true;
                     obj.GetComponent<Purse>().pu();
                     return;
                 }
@@ -190,6 +195,7 @@ public class DynamicMenu : MonoBehaviour
                 {
                     WriteThings("RIP little tie ...");
                     gameObject.SetActive(false);
+                    player.GetComponent<PlayerMovement>().b[1] = true;
                     obj.GetComponent<Radia>().heater();
                     return;
                 }
@@ -203,6 +209,7 @@ public class DynamicMenu : MonoBehaviour
         }
         if (obj.GetComponent<Item>().actions[count] == "erase")
         {
+            player.GetComponent<PlayerMovement>().b[3] = true;
             WriteThings("yeah thoses 'unpaid bills' can wait");
         }
         if (obj.GetComponent<Item>().actions[count] == "wash")
@@ -212,6 +219,7 @@ public class DynamicMenu : MonoBehaviour
                 if (item.name == "v_chemise(Clone)")
                 {
                     WriteThings("from white to pink !");
+                    player.GetComponent<PlayerMovement>().b[5] = true;
                     obj.GetComponent<WasingMachine>().Wash();
                     gameObject.SetActive(false);
                     return;
@@ -242,6 +250,7 @@ public class DynamicMenu : MonoBehaviour
             }
             else
             {
+                player.GetComponent<PlayerMovement>().b[8] = true;
                 WriteThings("..... And done ! I can leave it here");
                 obj.GetComponent<Letter>().Let();
                 gameObject.SetActive(false);

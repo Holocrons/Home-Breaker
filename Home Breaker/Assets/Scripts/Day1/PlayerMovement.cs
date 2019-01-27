@@ -12,6 +12,17 @@ public class PlayerMovement : MonoBehaviour
     public List<GameObject> inventory;
     public GameObject menuItem;
     private Animator anim;
+    public List<bool> b = new List<bool>() {
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+    };
 
     // Start is called before the first frame update
     void Start()

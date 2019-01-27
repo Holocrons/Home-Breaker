@@ -47,7 +47,7 @@ public class EndGame : MonoBehaviour
         Events.Letter
     };
 
-    private List<bool> toSay = new List<bool>
+    public List<bool> toSay = new List<bool>
     {
         false,
         false,
