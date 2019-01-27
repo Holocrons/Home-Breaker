@@ -13,14 +13,8 @@ public class Item : MonoBehaviour
     void Start()
     {
         info = GameObject.Find("objinfo");
-        Debug.Log(info.name);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void Look()
     {
@@ -38,7 +32,9 @@ public class Item : MonoBehaviour
         {
             info.GetComponentsInChildren<Transform>(true)[1].gameObject.SetActive(true);
             info.GetComponentsInChildren<Transform>(true)[1].gameObject.GetComponent<TextMesh>().text = name;
-            info.transform.position = new Vector2(transform.position.x, transform.position.y + 3);
+            info.transform.position = new Vector3(transform.position.x, Camera.main.transform.position.y + 1, 0);
+            if (name == "wine")
+                info.transform.position = new Vector3(transform.position.x, Camera.main.transform.position.y + 2f, 0);
         }
     }
 

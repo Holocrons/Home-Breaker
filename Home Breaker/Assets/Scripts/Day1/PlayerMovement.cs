@@ -52,7 +52,8 @@ public class PlayerMovement : MonoBehaviour
             menuItem.SetActive(true);
             menuItem.transform.position = new Vector3(collision.transform.position.x, collision.transform.position.y + 2, -5);
             menuItem.GetComponent<DynamicMenu>().obj = collision.gameObject;
-            //menuItem.GetComponent<DynamicMenu>().timer = Time.time + 0.1f;
+            if (collision.name == "wine")
+                menuItem.transform.position = new Vector3(collision.transform.position.x - 1, collision.transform.position.y, -5);
         }
     }
 }

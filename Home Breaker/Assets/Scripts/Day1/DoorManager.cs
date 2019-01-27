@@ -7,6 +7,13 @@ public class DoorManager : MonoBehaviour
     public GameObject otherDoor;
     public int destination;
     public bool e = false;
+    public GameObject info;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        info = GameObject.Find("objinfo");
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -25,6 +32,20 @@ public class DoorManager : MonoBehaviour
             collision.transform.position = otherDoor.transform.position;
             collision.GetComponent<PlayerMovement>().currentsScene = destination;
             collision.GetComponent<PlayerMovement>().timer = Time.time + 0.1f;
+        }
+        else if (e == true && collision.tag == "Player")
+        {
+            info.GetComponentsInChildren<Transform>(true)[1].gameObject.SetActive(true);
+            info.GetComponentsInChildren<Transform>(true)[1].gameObject.GetComponent<TextMesh>().text = name;
+            info.transform.position = new Vector3(transform.position.x, Camera.main.transform.position.y + 2, 0);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            info.GetComponentsInChildren<Transform>(true)[1].gameObject.SetActive(false);
         }
     }
 }
