@@ -103,7 +103,7 @@ public class DynamicMenu : MonoBehaviour
                     return;
                 }
             }
-            WriteThings("I need some Gas");
+            WriteThings("I need some gas");
             Camera.main.GetComponent<CameraManager>().PlayClip(2, 10f);
         }
         if (obj.GetComponent<Item>().actions[count] == "move")
@@ -142,13 +142,13 @@ public class DynamicMenu : MonoBehaviour
                     }
                     else
                     {
-                        WriteThings("the shoes are too clean they will not\n leave a mark");
+                        WriteThings("The shoes are too clean they wouldn't\nleave a mark");
                     }
                 }
             }
             if (obj.name == "dirt")
             {
-                WriteThings("I have nothing to make a mess with");
+                WriteThings("I have nothing to make a mess with.");
             } 
         }
         if (obj.GetComponent<Item>().actions[count] == "hide")
@@ -163,13 +163,13 @@ public class DynamicMenu : MonoBehaviour
                 }
                 else if (item.name == "v_paquet_clopes(Clone)" && obj.name == "purse")
                 {
-                    WriteThings("Old demons strikes back");
+                    WriteThings("Old demons strike back!");
                     player.GetComponent<PlayerMovement>().b[7] = true;
                     obj.GetComponent<Purse>().pu();
                     return;
                 }
             }
-            WriteThings("I don't have anything to hide in there");
+            WriteThings("I don't have anything to hide in there.");
         }
         if (obj.GetComponent<Item>().actions[count] == "repair")
         {
@@ -178,14 +178,14 @@ public class DynamicMenu : MonoBehaviour
                 if (item.name == "v_cle_molette(Clone)")
                 {
                     radia = true;
-                    WriteThings("Thit thing could burn anything now !"); 
+                    WriteThings("This thing could burn anything now !"); 
                     return;
                 }
             }
             if (radia == false)
                 WriteThings("I need tools to repair it !");
             else
-                WriteThings("it works fine");
+                WriteThings("It works fine.");
         }
         if (obj.GetComponent<Item>().actions[count] == "burn")
         {
@@ -201,7 +201,7 @@ public class DynamicMenu : MonoBehaviour
                 }
                 else if (item.name == "v_cravate(Clone)" && radia == false)
                 {
-                    WriteThings("the heater is cold");
+                    WriteThings("The heater is cold");
                     return ;
                 }
             }
@@ -210,7 +210,7 @@ public class DynamicMenu : MonoBehaviour
         if (obj.GetComponent<Item>().actions[count] == "erase")
         {
             player.GetComponent<PlayerMovement>().b[3] = true;
-            WriteThings("yeah thoses 'unpaid bills' can wait");
+            WriteThings("Yeah those 'unpaid bills' can wait");
         }
         if (obj.GetComponent<Item>().actions[count] == "wash")
         {
@@ -218,14 +218,14 @@ public class DynamicMenu : MonoBehaviour
             {
                 if (item.name == "v_chemise(Clone)")
                 {
-                    WriteThings("from white to pink !");
+                    WriteThings("From white to pink !");
                     player.GetComponent<PlayerMovement>().b[5] = true;
                     obj.GetComponent<WasingMachine>().Wash();
                     gameObject.SetActive(false);
                     return;
                 }
             }
-            WriteThings("i have nothing to wash for now");
+            WriteThings("I have nothing to wash for now");
         }
         if (obj.GetComponent<Item>().actions[count] == "write")
         {
@@ -242,11 +242,11 @@ public class DynamicMenu : MonoBehaviour
             }
             if (write == false)
             {
-                WriteThings("I need something fancier than a pen to \nwrite this letter");
+                WriteThings("I need something fancier than a pen to\nwrite this letter");
             }
             else if (parf == false)
             {
-                WriteThings("It need a feminin touch to make it real");
+                WriteThings("It needs a feminin touch to make it real");
             }
             else
             {
