@@ -23,9 +23,9 @@ public class TextDisplay : MonoBehaviour
 
     void DisplayText(string str)
     {
-        GameObject tmp;
+      /*  GameObject tmp;
 
         tmp = Instantiate(prefabs);
-        tmp.GetComponent<TextMesh>().text = str;
+        tmp.GetComponent<TextMesh>().text = str;*/
     }
 }

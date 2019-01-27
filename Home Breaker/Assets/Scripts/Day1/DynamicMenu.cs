@@ -49,6 +49,7 @@ public class DynamicMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && timer <= Time.time)
         {
             HandleThings();
+            
         }
     }
 
@@ -79,6 +80,7 @@ public class DynamicMenu : MonoBehaviour
                     return;
                 }
             }
+            WriteThings("I need some Gas");
         }
         if (obj.GetComponent<Item>().actions[count] == "move")
         {
@@ -86,6 +88,7 @@ public class DynamicMenu : MonoBehaviour
             if ((tmp = obj.GetComponent<Toillet>()) != null)
             {
                 tmp.Switch();
+                gameObject.SetActive(false);
             }
         }
         if (obj.GetComponent<Item>().actions[count] == "dirty")
@@ -94,16 +97,45 @@ public class DynamicMenu : MonoBehaviour
             foreach (GameObject item in player.GetComponent<PlayerMovement>().inventory)
             {
 
-                if (item.name == "shoe"  && (tmp = item.GetComponent<Shoe>()) != null)
+                if (item.name == "shoe" && (tmp = item.GetComponent<Shoe>()) != null)
                 {
                     if (obj.name == "dirt")
+                    {
                         tmp.dirty = true;
+                        WriteThings("Now the shoes are dirty !");
+                        gameObject.SetActive(false);
+                        return;
+                    }
                     else if (tmp.dirty == true)
+                    {
                         obj.GetComponent<Floor>().Activate();
+                        WriteThings("Dad made such a mess !");
+                        gameObject.SetActive(false);
+                        return;
+                    }
+                    else
+                    {
+                        WriteThings("the shoes are too clean they will not\n leave a mark");
+                    }
                 }
             }
-            
+            if (obj.name == "dirt")
+            {
+                WriteThings("I have nothing to make a mess with");
+            }
+
         }
+    }
+
+    void WriteThings(string str)
+    {
+        GameObject tmp;
+
+        tmp = GameObject.Find("Info");
+        tmp.transform.position = new Vector3(Camera.main.transform.position.x - 3, Camera.main.transform.position.y + 2.5f, 0);
+        tmp.GetComponent<MeshRenderer>().sortingOrder = 6;
+        tmp.GetComponent<InfoManager>().timer = Time.time + 3f;
+        tmp.GetComponent<TextMesh>().text = str;
     }
 
     void UpdateData()
