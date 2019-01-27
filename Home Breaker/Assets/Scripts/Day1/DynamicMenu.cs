@@ -25,8 +25,8 @@ public class DynamicMenu : MonoBehaviour
         mr[0].sortingOrder = 4;
         mr[1].sortingOrder = 4;
         UpdateData();
-        basPos.x = transform.position.x - 0.5f;
-        basPos.y = transform.position.y - 0.1f;
+        basPos.x = transform.position.x - 0.75f;
+        basPos.y = transform.position.y - 0.15f;
         arrow.transform.position = basPos;
         timer = Time.time + 0.1f;
     }
@@ -41,8 +41,8 @@ public class DynamicMenu : MonoBehaviour
         mr[0].sortingOrder = 4;
         mr[1].sortingOrder = 4;
         UpdateData();
-        basPos.x = transform.position.x - 0.5f;
-        basPos.y = transform.position.y - 0.1f;
+        basPos.x = transform.position.x - 0.75f;
+        basPos.y = transform.position.y - 0.15f;
         arrow.transform.position = basPos;
         timer = Time.time + 0.1f;
     }
@@ -75,6 +75,7 @@ public class DynamicMenu : MonoBehaviour
     {
         if (obj.GetComponent<Item>().actions[count] == "take")
         {
+            Camera.main.GetComponent<CameraManager>().PlayClip(0, 1f);
             obj.SetActive(false);
             gameObject.SetActive(false);
             GameObject tmp = Instantiate(obj.GetComponent<Item>().miniItem);
@@ -102,6 +103,7 @@ public class DynamicMenu : MonoBehaviour
                 }
             }
             WriteThings("I need some Gas");
+            Camera.main.GetComponent<CameraManager>().PlayClip(2, 10f);
         }
         if (obj.GetComponent<Item>().actions[count] == "move")
         {
@@ -253,8 +255,8 @@ public class DynamicMenu : MonoBehaviour
 
     void UpdateData()
     {
-        basPos.x = transform.position.x - 0.5f;
-        basPos.y = transform.position.y - 0.1f;
+        basPos.x = transform.position.x - 0.75f;
+        basPos.y = transform.position.y - 0.15f;
         if (obj == null)
             return;
         tm[0].text = obj.name;

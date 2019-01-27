@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Ludo/Assets/Menu/Menu.unity
+    guid: 399890eb5f580b441b686d62a8e0a751
+  - enabled: 1
     path: Assets/Scenes/Day1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
