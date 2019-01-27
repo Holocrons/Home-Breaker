@@ -22,8 +22,8 @@ public class DynamicMenu : MonoBehaviour
         mr[0].sortingOrder = 4;
         mr[1].sortingOrder = 4;
         UpdateData();
-        basPos.x = transform.position.x - 0.75f;
-        basPos.y = transform.position.y - 0.25f;
+        basPos.x = transform.position.x - 0.5f;
+        basPos.y = transform.position.y - 0.1f;
         arrow.transform.position = basPos;
         timer = Time.time + 0.1f;
     }
@@ -38,12 +38,12 @@ public class DynamicMenu : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.S) && count < nb - 1)
         {
-            arrow.transform.position = new Vector2(arrow.transform.position.x, arrow.transform.position.y - 0.5f);
+            arrow.transform.position = new Vector2(arrow.transform.position.x, arrow.transform.position.y - 0.25f);
             count++;
         }
         if (Input.GetKeyDown(KeyCode.Z) && count > 0)
         {
-            arrow.transform.position = new Vector2(arrow.transform.position.x, arrow.transform.position.y + 0.5f);
+            arrow.transform.position = new Vector2(arrow.transform.position.x, arrow.transform.position.y + 0.25f);
             count--;
         }
         if (Input.GetKeyDown(KeyCode.E) && timer <= Time.time)
@@ -57,10 +57,13 @@ public class DynamicMenu : MonoBehaviour
     {
         if (obj.GetComponent<Item>().actions[count] == "take")
         {
-            player.GetComponent<PlayerMovement>().inventory.Add(obj);
             obj.SetActive(false);
             gameObject.SetActive(false);
-            obj.transform.parent = GameObject.Find("Inventory").transform;
+            GameObject tmp = Instantiate(obj.GetComponent<Item>().miniItem);
+            player.GetComponent<PlayerMovement>().inventory.Add(tmp);
+            tmp.transform.parent = GameObject.Find("Inventory").transform;
+            tmp.transform.localScale = new Vector2(2, 2);
+            tmp.GetComponent<SpriteRenderer>().sortingOrder = 5;
             timer = Time.time + 0.1f;
         }
         if (obj.GetComponent<Item>().actions[count] == "look")
@@ -72,7 +75,7 @@ public class DynamicMenu : MonoBehaviour
         {
             foreach (GameObject item in player.GetComponent<PlayerMovement>().inventory)
             {
-                if (item.name == "jerrycan")
+                if (item.name.IndexOf("jerrycan") != -1)
                 {
                     obj.GetComponent<StartEngine>().enabled = true;
                     player.GetComponent<PlayerMovement>().inventory.Remove(item);
@@ -96,9 +99,11 @@ public class DynamicMenu : MonoBehaviour
             Shoe tmp;
             foreach (GameObject item in player.GetComponent<PlayerMovement>().inventory)
             {
-
-                if (item.name == "shoe" && (tmp = item.GetComponent<Shoe>()) != null)
+                Debug.Log(item.name);
+                if (item.name == "v_chassure(Clone)")
                 {
+                    item.AddComponent<Shoe>();
+                    tmp = item.GetComponent<Shoe>();
                     if (obj.name == "dirt")
                     {
                         tmp.dirty = true;
@@ -140,8 +145,8 @@ public class DynamicMenu : MonoBehaviour
 
     void UpdateData()
     {
-        basPos.x = transform.position.x - 0.75f;
-        basPos.y = transform.position.y - 0.25f;
+        basPos.x = transform.position.x - 0.5f;
+        basPos.y = transform.position.y - 0.1f;
         tm[0].text = obj.name;
         tm[1].text = "";
         nb = 0;

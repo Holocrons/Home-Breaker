@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StartEngine : MonoBehaviour
 {
+    public GameObject inventory;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +16,16 @@ public class StartEngine : MonoBehaviour
         tmp.GetComponent<MeshRenderer>().sortingOrder = 6;
         tmp.GetComponent<InfoManager>().timer = Time.time + 3f;
         tmp.GetComponent<TextMesh>().text = "Good bye stupid flowers";
+        Transform[] t = inventory.GetComponentsInChildren<Transform>(true);
+        foreach (Transform nt in t)
+        {
+            if (nt.gameObject.name == "v_jerrycan(Clone)")
+            {
+                GameObject.Find("Timmy").GetComponent<PlayerMovement>().inventory.Remove(nt.gameObject);
+                Destroy(nt.gameObject);
+            }
+        }
+
     }
 
     // Update is called once per frame
