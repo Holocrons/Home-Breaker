@@ -15,6 +15,7 @@ public class HandleTimer : MonoBehaviour
     private void Start()
     {
         timer = 300;
+        GetComponent<MeshRenderer>().sortingOrder = 4;
     }
 
     private void Update()
@@ -22,7 +23,7 @@ public class HandleTimer : MonoBehaviour
         if (timer >= 0.0f && canCount)
         {
             timer -= Time.deltaTime;
-            GetComponent<Text> ().text = string.Format("{0:0}:{1:00}", Mathf.Floor(timer / 60), timer % 60);
+            GetComponent<TextMesh>().text = string.Format("{0:0}:{1:00}", Mathf.Floor(timer / 60), timer % 60);
         }
         else if (timer <= 0.0F && !doOnce)
         {

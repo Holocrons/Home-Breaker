@@ -19,7 +19,8 @@ public class DoorManager : MonoBehaviour
     {
         if (collision.tag == "Player" && e == true && Input.GetKeyDown(KeyCode.E))
         {
-            collision.transform.position = otherDoor.transform.position;
+            if (otherDoor != null)
+                collision.transform.position = otherDoor.transform.position;
             collision.GetComponent<PlayerMovement>().currentsScene = destination;
             collision.GetComponent<PlayerMovement>().timer = Time.time + 0.1f;
         }
@@ -38,6 +39,8 @@ public class DoorManager : MonoBehaviour
             info.GetComponentsInChildren<Transform>(true)[1].gameObject.SetActive(true);
             info.GetComponentsInChildren<Transform>(true)[1].gameObject.GetComponent<TextMesh>().text = name;
             info.transform.position = new Vector3(transform.position.x, Camera.main.transform.position.y + 2, 0);
+            if (name == "school")
+                info.transform.position = new Vector3(transform.position.x + 1, Camera.main.transform.position.y + 2, 0);
         }
     }
 
