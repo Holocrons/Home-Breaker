@@ -24,7 +24,7 @@ public class Item : MonoBehaviour
         GameObject tmp;
 
         tmp = Instantiate(prefabs);
-        tmp.transform.position = new Vector3(Camera.main.transform.position.x - 1, Camera.main.transform.position.y + 2.5f, 0);
+        tmp.transform.position = new Vector3(Camera.main.transform.position.x - 3, Camera.main.transform.position.y + 2.5f, 0);
         tmp.GetComponent<MeshRenderer>().sortingOrder = 6;
         tmp.GetComponent<TextMesh>().text = look;
         Destroy(tmp, 3f);

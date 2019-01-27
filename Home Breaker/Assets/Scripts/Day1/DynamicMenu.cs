@@ -25,6 +25,7 @@ public class DynamicMenu : MonoBehaviour
         basPos.x = transform.position.x - 0.75f;
         basPos.y = transform.position.y - 0.25f;
         arrow.transform.position = basPos;
+        timer = Time.time + 0.1f;
     }
 
 
@@ -47,19 +48,61 @@ public class DynamicMenu : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E) && timer <= Time.time)
         {
-            if (obj.GetComponent<Item>().actions[count] == "take")
+            HandleThings();
+        }
+    }
+
+    void HandleThings()
+    {
+        if (obj.GetComponent<Item>().actions[count] == "take")
+        {
+            player.GetComponent<PlayerMovement>().inventory.Add(obj);
+            obj.SetActive(false);
+            gameObject.SetActive(false);
+            obj.transform.parent = GameObject.Find("Inventory").transform;
+            timer = Time.time + 0.1f;
+        }
+        if (obj.GetComponent<Item>().actions[count] == "look")
+        {
+            obj.GetComponent<Item>().Look();
+            timer = Time.time + 0.1f;
+        }
+        if (obj.GetComponent<Item>().actions[count] == "start")
+        {
+            foreach (GameObject item in player.GetComponent<PlayerMovement>().inventory)
             {
-                player.GetComponent<PlayerMovement>().inventory.Add(obj);
-                obj.SetActive(false);
-                gameObject.SetActive(false);
-                obj.transform.parent = GameObject.Find("Inventory").transform;
-                timer = Time.time + 0.1f;
+                if (item.name == "jerrycan")
+                {
+                    obj.GetComponent<StartEngine>().enabled = true;
+                    player.GetComponent<PlayerMovement>().inventory.Remove(item);
+                    gameObject.SetActive(false);
+                    return;
+                }
             }
-            if (obj.GetComponent<Item>().actions[count] == "look")
+        }
+        if (obj.GetComponent<Item>().actions[count] == "move")
+        {
+            Toillet tmp;
+            if ((tmp = obj.GetComponent<Toillet>()) != null)
             {
-                obj.GetComponent<Item>().Look();
-                timer = Time.time + 0.1f;
+                tmp.Switch();
             }
+        }
+        if (obj.GetComponent<Item>().actions[count] == "dirty")
+        {
+            Shoe tmp;
+            foreach (GameObject item in player.GetComponent<PlayerMovement>().inventory)
+            {
+
+                if (item.name == "shoe"  && (tmp = item.GetComponent<Shoe>()) != null)
+                {
+                    if (obj.name == "dirt")
+                        tmp.dirty = true;
+                    else if (tmp.dirty == true)
+                        obj.GetComponent<Floor>().Activate();
+                }
+            }
+            
         }
     }
 
@@ -74,8 +117,8 @@ public class DynamicMenu : MonoBehaviour
         count = 0;
         foreach (string str in obj.GetComponent<Item>().actions)
         {
-            tm[1].text += str + "\n";
-            nb++;
+                tm[1].text += str + "\n";
+                nb++;
         }
     }
 }
