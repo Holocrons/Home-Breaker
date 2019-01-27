@@ -56,6 +56,12 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector2(-1, 1);
         anim.SetInteger("running", x);
         transform.Translate(new Vector2(x, 0) * Time.deltaTime * speed);
+        foreach (var elem in b)
+            if (elem == false)
+                return;
+        var obj = GameObject.Find("Timer");
+        if (obj)
+            obj.GetComponent<HandleTimer>().ChangeScene();
     }
 
     private void OnTriggerStay2D(Collider2D collision)

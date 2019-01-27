@@ -15,7 +15,7 @@ public class HandleTimer : MonoBehaviour
 
     private void Start()
     {
-        timer = 240;//420;
+        timer = 420;//420;
         GetComponent<MeshRenderer>().sortingOrder = 4;
     }
 
@@ -43,12 +43,11 @@ public class HandleTimer : MonoBehaviour
         doOnce = false;
     }
 
-    void ChangeScene()
+    public void ChangeScene()
     {
         GameObject.Find("Timmy").GetComponent<PlayerMovement>().currentsScene = 12;
 
         prefabs.GetComponent<EndGame>().toSay = GameObject.Find("Timmy").GetComponent<PlayerMovement>().b;
         prefabs.SetActive(true);
-
     }
 }

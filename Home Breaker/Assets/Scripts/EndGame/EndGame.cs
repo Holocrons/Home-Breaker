@@ -23,18 +23,6 @@ public class EndGame : MonoBehaviour
         Letter
     }
 
-    //    private Dictionary<Events, bool> toSay = new Dictionary<Events, bool>() {
-    //        { Events.ToiletLid, true },
-    //        { Events.LawnMower, true },
-    //        { Events.MuddyShoes, false },
-    //        { Events.Whiskey, true },
-    //        { Events.Letter, true },
-    //        { Events.Necktie, true },
-    //        { Events.AnsweringMachine, false },
-    //        { Events.Laundry, true },
-    //        { Events.Cigarettes, true }
-    //    };
-
     private List<Events> order = new List<Events> {
         Events.ToiletLid,
         Events.Necktie,
@@ -54,9 +42,9 @@ public class EndGame : MonoBehaviour
         true,
         true,
         true,
-        false,
-        false,
-        false,
+        true,
+        true,
+        true,
         false
     };
 
@@ -91,12 +79,15 @@ public class EndGame : MonoBehaviour
     private float timer;
     static private float duration = 3;
     private KeyValuePair<Events, bool> temp;
+    private int finale = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         timmy = this.transform.Find("Child").gameObject;
         timer = 0;
+        GameObject.Find("Timer").SetActive(false);
+        GameObject.Find("Inventory").SetActive(false);
     }
 
     // Update is called once per frame
@@ -111,7 +102,6 @@ public class EndGame : MonoBehaviour
             else
             {
                 timer = duration;
-                Debug.Log(toSay.Count);
                 while (toSay.Count > 0 && !toSay[0])
                 {
                     toSay.RemoveAt(0);
@@ -119,8 +109,11 @@ public class EndGame : MonoBehaviour
                     SwitchParent();
                 }
                 if (toSay.Count <= 0)
+                {
+                    DisplayEnd();
                     return;
-                Debug.Log(toSay.Count);
+                }
+                finale++;
                 DisplayArguement(order[0]);
                 toSay[0] = false;
             }
@@ -154,5 +147,30 @@ public class EndGame : MonoBehaviour
             timmy.transform.rotation = new Quaternion(rotation.x, 0, rotation.z, rotation.w);
         if (texts[parent].ContainsKey(say))
             WriteThings(texts[parent][say]);
+    }
+
+    void DisplayEnd()
+    {
+        bool win = false;
+        if (finale >= 5)
+            win = true;
+        this.transform.Find("Child").gameObject.SetActive(false);
+        this.transform.Find("Mother").gameObject.SetActive(false);
+        this.transform.Find("Father").gameObject.SetActive(false);
+        this.transform.Find("Info").gameObject.SetActive(false);
+        if (win)
+        {
+            this.transform.Find("ending-won").gameObject.SetActive(true);
+            this.transform.Find("Win").gameObject.SetActive(true);
+            this.transform.Find("Win").gameObject.GetComponent<MeshRenderer>().sortingOrder = 5;
+        }
+        else
+        {
+            this.transform.Find("ending-loss").gameObject.SetActive(true);
+            this.transform.Find("Loss").gameObject.SetActive(true);
+            this.transform.Find("Loss").gameObject.GetComponent<MeshRenderer>().sortingOrder = 5;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
 }

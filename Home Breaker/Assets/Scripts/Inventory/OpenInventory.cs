@@ -8,7 +8,7 @@ public class OpenInventory : MonoBehaviour
     private bool state = false;
     static private int scale = 2;
     static private int objectSize = 32 * scale;
-    static private int shift = 10;
+    static private int shift = 20;
     private Camera cam;
 
     // Start is called before the first frame update
