@@ -247,6 +247,17 @@ public class DynamicMenu : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+        if (obj.GetComponent<Item>().actions[count] == "put it")
+        {
+            foreach (GameObject item in player.GetComponent<PlayerMovement>().inventory)
+            {
+                if (item.name == "v_cravate_crame(Clone)")
+                {
+                    obj.GetComponent<putis>().end();
+                    return;
+                }
+            }   
+        }
     }
 
     void WriteThings(string str)

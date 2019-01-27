@@ -27,6 +27,7 @@ public class StartEngine : MonoBehaviour
                 Destroy(nt.gameObject);
             }
         }
+        //Camera.main.GetComponent<CameraManager>().PlayClip(3, 1);
 
     }
 

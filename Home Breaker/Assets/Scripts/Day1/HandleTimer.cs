@@ -14,7 +14,7 @@ public class HandleTimer : MonoBehaviour
 
     private void Start()
     {
-        timer = 300;
+        timer = 420;
         GetComponent<MeshRenderer>().sortingOrder = 4;
     }
 
